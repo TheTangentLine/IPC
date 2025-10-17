@@ -10,7 +10,6 @@ using namespace std;
 
 int main()
 {
-    int smhKey;
     while (true)
     {
         cout << "Input the key: ";
