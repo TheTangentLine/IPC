@@ -20,7 +20,7 @@ int main()
         shmId = shmget(smhKey, SHM_SIZE, 0666);
         if (shmId == -1)
         {
-            cout << "Wrong key, try again ahaha: " << std::endl;
+            cout << "Wrong key, try again ahaha: " << endl;
             continue;
         }
 
@@ -28,7 +28,7 @@ int main()
         shm_ptr = (char *)shmat(shmId, NULL, 0);
         if (shm_ptr == (char *)-1)
         {
-            std::cerr << "Shmat failed" << std::endl;
+            std::cerr << "Shmat failed" << endl;
             return 1;
         }
 
