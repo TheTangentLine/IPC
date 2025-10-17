@@ -2,13 +2,13 @@ This example demonstrates process-to-process communication using **POSIX signals
 
 ### Roles:
 
-1. `program1`: sender (prompts for a PID and sends a signal)
-2. `program2`: receiver (prints a message whenever it receives the signal)
+1. `sender`: sender (prompts for a PID and sends a signal)
+2. `receiver`: receiver (prints a message whenever it receives the signal)
 
 ### What it does:
 
-- `program1` calls `kill(pid, SIGTERM)` to send `SIGTERM (15)` to the specified process.
-- `program2` registers a handler for `SIGTERM` and, instead of terminating, prints a line each time the signal is received.
+- `sender` calls `kill(pid, SIGTERM)` to send `SIGTERM (15)` to the specified process.
+- `receiver` registers a handler for `SIGTERM` and, instead of terminating, prints a line each time the signal is received.
 
 ### Notes and corrections:
 
@@ -19,8 +19,8 @@ This example demonstrates process-to-process communication using **POSIX signals
 ### Build (macOS/Linux):
 
 ```bash
-g++ -o program2 program2.cpp
-g++ -o program1 program1.cpp
+g++ -o receiver receiver.cpp
+g++ -o sender sender.cpp
 ```
 
 ### Run:
@@ -28,18 +28,18 @@ g++ -o program1 program1.cpp
 **1. Start the receiver in one terminal:**
 
 ```bash
-./program2
+./receiver
 ```
 
 It will print its Process ID (PID).
 
-**2. In another terminal, run the sender and input the PID shown by `program2`:**
+**2. In another terminal, run the sender and input the PID shown by `receiver`:**
 
 ```bash
-./program1
+./sender
 ```
 
-When prompted: `Input the process id: <PID_from_program2>`
+When prompted: `Input the process id: <PID_from_receiver>`
 
 You can customize the signal by changing the signal called in both program, refer to this [Link](https://www.ibm.com/docs/en/zos/3.1.0?topic=descriptions-kill-end-process-job-send-it-signal) for more documentation.
 
